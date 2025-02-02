@@ -1,0 +1,19 @@
+// See https://containers.dev/implementors/json_reference/ for configuration reference
+{
+	"name": "ReactProjects with Vite Dev Container",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"forwardPorts": [5173],
+	"postCreateCommand": "npm install",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"dbaeumer.vscode-eslint",
+				"esbenp.prettier-vscode",
+				"ms-vscode.vscode-typescript-next"
+			]
+		}
+	},
+  "remoteUser": "node"
+}

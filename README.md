@@ -1,2 +1,2 @@
 # ReactProjects
-Some smaller React projects to learn the Framework
+Some smaller React projects using Vite to learn the library
