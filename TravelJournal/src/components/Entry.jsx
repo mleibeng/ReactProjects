@@ -1,19 +1,37 @@
-export default function Entry() {
+import PropTypes from 'prop-types'
+
+export default function Entry(props) {
     return (
         <article className="journal-entry">
-            <div className="main-img-container">
-                <img src="../images/mount_fuji.png" className="fuji" alt="mount_fuji" />
+            <div className="main-image-container">
+                <img
+                    className="main-image"
+                    src={props.img}
+                    alt={props.altText}
+                />
             </div>
-            <div>
-                <img src="/images/location_marker.png" className="location-marker" alt="location marker" />
-                <span>Japan</span>
-                <a href="https://g.co/kgs/dqFuH1v">View on Google Maps</a>
-                <h2>Mount Fuji</h2>
-                <p>12 Jan, 2021 - 24 Jan, 2021</p>
-                <p>Mount Fuji is the tallest mountain in Japan, standing at 3,776 meters (12,380 feet).
-                    Mount Fuji is the single most popular tourist site in Japan, for both
-                    Japanese and foreign tourists.</p>
+            <div className="info-container">
+                <img
+                    className="marker"
+                    src="/images/location_marker.png"
+                    alt="map marker icon"
+                />
+                <span className="country">{props.country}</span>
+                <a href={props.href}>View on Google Maps</a>
+                <h2 className="entry-title">{props.entryTitle}</h2>
+                <p className="trip-dates">{props.tripDates}</p>
+                <p className="entry-text">{props.entryText}</p>
             </div>
         </article>
     )
 }
+
+Entry.propTypes = {
+    img: PropTypes.string.isRequired,
+    country: PropTypes.string.isRequired,
+    href: PropTypes.string.isRequired,
+    entryTitle: PropTypes.string.isRequired,
+    tripDates: PropTypes.string.isRequired,
+    entryText: PropTypes.string.isRequired,
+    altText: PropTypes.string
+};
