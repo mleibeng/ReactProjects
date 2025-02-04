@@ -17,7 +17,7 @@ export const destinations = [
       href: "https://maps.app.goo.gl/Zr17SCrsJeCEKMd36",
       entryTitle: "Sydney Opera House",
       tripDates: "27 May, 2024 - 8 Jun, 2024",
-      entryText: "The Sydney Opera House is a multi-venue performing arts centre in Sydney. Located on the banks of the Sydney Harbour, it is often regarded as one of the 20th century's most famous and distinctive buildings."
+      entryText: "The Sydney Opera House is a multi-venue performing arts centre in Sydney. Located on the banks of the Sydney Harbour, it is often regarded as one of the 20th century's most famous and distinctive buildings.",
     },
     {
       id: 3,
