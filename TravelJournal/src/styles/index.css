@@ -19,6 +19,9 @@ header {
     align-items: center;
     color: white;
     height: 55px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 header > img {
@@ -33,6 +36,7 @@ header > h1 {
 
 article.journal-entry {
     display: flex;
+    margin-bottom: 36px;
 }
 
 article.journal-entry .marker {
