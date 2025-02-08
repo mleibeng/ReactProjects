@@ -1,30 +1,39 @@
 import React from "react";
+import Recipe from "./ClaudeRecipe";
+import IngredientsList from "./IngredientsList";
+import { getRecipeFromMistral } from "./ai";
 
 export default function Main() {
+    const [ingredients, setIngredients] = React.useState([]);
+    const [recipe, setRecipe] = React.useState(false);
 
-    const [ingredients, setIngredients] = React.useState([])
+    async function fetchRecipe() {
+        try {
+            const generatedRecipe = await getRecipeFromMistral(ingredients);
+            setRecipe(generatedRecipe);
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
 
-    const ingredientsListItems = ingredients.map( ingredient => (
-        <li key={ingredient}>{ingredient}</li>
-    ))
-
-    function handleSubmit(event){
+    function handleSubmit(event) {
         event.preventDefault();
-        const formdata = new FormData(event.currentTarget)
-        const newIngredient = formdata.get("ingredient")
-        setIngredients(prevIngredients => [...prevIngredients, newIngredient])
-        event.currentTarget.reset()
+        const formdata = new FormData(event.currentTarget);
+        const newIngredient = formdata.get("ingredient");
+        setIngredients(prevIngredients => [...prevIngredients, newIngredient]);
+        event.currentTarget.reset();
     }
 
     return (
         <main>
-            <form className="add-ingredients-form" onSubmit={handleSubmit}>
+            <form className="add-ingredient-form" onSubmit={handleSubmit}>
                 <input type="text" aria-label="Add ingredient" placeholder="e.g. pepper" name="ingredient" />
-                <button type="submit" >Add ingredient</button>
+                <button type="submit">Add ingredient</button>
             </form>
-            <ul>
-                {ingredientsListItems}
-            </ul>
+            <section>
+                <IngredientsList fetchRecipe={fetchRecipe} ingredients={ingredients} />
+            </section>
+            {recipe && <Recipe recipe={recipe} />}
         </main>
-    )
+    );
 }

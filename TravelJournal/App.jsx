@@ -44,4 +44,4 @@ export default function App() {
 // // const ppokemon = pokemon.map( x => "<p>" + x + "</p>")
 // const pppokemon = pokemon.map(x => `<p>${x}</p>`)
 
-// console.log(pppokemon)
+// console.log(pppokemon)s
